@@ -15,4 +15,4 @@ jobs:
       - name: Build
         run: cmake --build build
       - name: Test
-      - run: cd build && ctest
+        run: cd build && ctest
