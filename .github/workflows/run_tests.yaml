@@ -1,12 +1,12 @@
 name: 'Run Tests'
 on:
-  pull_requests:
+  pull_request:
     branches:
       - main
 
 jobs:
   run-tests:
-    runs-on:
+    runs-on: Ubuntu-22.04
     steps:
       - name: Checkout
         uses: actions/checkout@v3
