@@ -1,5 +1,5 @@
-#ifndef RAY_TRACER__VEC3_H_
-#define RAY_TRACER__VEC3_H_
+#ifndef VEC3_H
+#define VEC3_H
 
 #include <cmath>
 
@@ -41,6 +41,7 @@ class Vec3 {
     return sqrt(e[0] * e[0] + e[1] * e[1] + e[2] * e[2]);
   }
 
+ private:
   double e[3];
 };
 
@@ -82,4 +83,4 @@ inline Vec3 normalize(const Vec3 &u) {
   return u / u.length();
 }
 
-#endif //RAY_TRACER__VEC3_H_
+#endif //VEC3_H

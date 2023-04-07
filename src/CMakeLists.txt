@@ -1,1 +1,1 @@
-add_executable(ray_tracer main.cpp vec3.h)
+add_executable(ray_tracer main.cpp vec3.h ray.h)
