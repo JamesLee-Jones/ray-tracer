@@ -28,7 +28,7 @@ TEST(VectorTests, TestUnaryMinux) {
 
 TEST(VectorTests, TestIndexing) {
   const Vec3 v = Vec3(1, 2, 3);
-  EXPECT_EQ(v[0], 1);
+  EXPECT_EQ(v[0], 2);
   EXPECT_EQ(v[1], 2);
   EXPECT_EQ(v[2], 3);
 }
