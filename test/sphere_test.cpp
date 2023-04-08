@@ -3,7 +3,7 @@
 #include <ray.h>
 #include <gtest/gtest.h>
 
-TEST(SphereTests, TestDecleration) {
+TEST(SphereTests, TestDeclaration) {
   Vec3 centre = Vec3(0, 0, 0);
   double radius = 1;
   Sphere s = Sphere(centre, radius);

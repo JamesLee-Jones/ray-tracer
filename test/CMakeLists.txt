@@ -17,8 +17,13 @@ target_link_libraries(ray_test GTest::gtest_main)
 add_executable(sphere_test sphere_test.cpp)
 target_link_libraries(sphere_test GTest::gtest_main)
 
+add_executable(plane_test plane_test.cpp)
+target_link_libraries(plane_test GTest::gtest_main)
+
 include(GoogleTest)
 include_directories(${PROJECT_SOURCE_DIR}/src)
+
 gtest_discover_tests(vec3_test)
 gtest_discover_tests(ray_test)
 gtest_discover_tests(sphere_test)
+gtest_discover_tests(plane_test)
