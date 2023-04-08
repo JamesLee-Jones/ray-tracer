@@ -5,6 +5,7 @@
 
 class Ray {
  public:
+  // TODO: Throw an error if the direction is (0,0,0)
   Ray(Vec3 origin, Vec3 direction) : orig{origin}, dir{direction} {}
 
   Vec3 at(double mu) const {

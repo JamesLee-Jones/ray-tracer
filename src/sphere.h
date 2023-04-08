@@ -8,6 +8,7 @@
 
 class Sphere : public Intersectable {
  public:
+  // TODO: Throw an error if the radius is 0
   Sphere(Vec3 centre, double radius) : c{centre}, r{radius} {}
 
   Vec3 getCenter() { return c; }
