@@ -45,7 +45,7 @@ TEST(SphereTests, TestNormalAt) {
   EXPECT_DOUBLE_EQ(s.normalAt(normal_point).z(), normal_point.z());
 }
 
-TEST(SphereTests, TestRayIntersection) {
+TEST(SphereTests, TestExternalRayIntersection) {
   Vec3 centre = Vec3(0, 0, 2);
   double radius = 1;
   Sphere s = Sphere(centre, radius);
@@ -62,10 +62,35 @@ TEST(SphereTests, TestRayIntersection) {
   EXPECT_DOUBLE_EQ(intersection.normal.x(), expected_normal.x());
   EXPECT_DOUBLE_EQ(intersection.normal.y(), expected_normal.y());
   EXPECT_DOUBLE_EQ(intersection.normal.z(), expected_normal.z());
+}
 
-  ray_dir = Vec3(1, 0, 0);
-  ray = Ray(ray_origin, ray_dir);
-  intersection = s.intersect(ray, 0, 10);
+TEST(SphereTests, TestInternalRayIntersection) {
+  Vec3 centre = Vec3(0, 0, 0);
+  double radius = 1;
+  Sphere s = Sphere(centre, radius);
+  Vec3 ray_origin = Vec3(0, 0, 0);
+  Vec3 ray_dir = Vec3(0, 0, 1);
+  Ray ray = Ray(ray_origin, ray_dir);
+  Intersection intersection = s.intersect(ray, 0 ,10);
+  Vec3 expected_intersection = Vec3(0, 0, 1);
+  Vec3 expected_normal = Vec3(0, 0, -1);
+  EXPECT_TRUE(intersection.hit);
+  EXPECT_DOUBLE_EQ(intersection.point.x(), expected_intersection.x());
+  EXPECT_DOUBLE_EQ(intersection.point.y(), expected_intersection.y());
+  EXPECT_DOUBLE_EQ(intersection.point.z(), expected_intersection.z());
+  EXPECT_DOUBLE_EQ(intersection.normal.x(), expected_normal.x());
+  EXPECT_DOUBLE_EQ(intersection.normal.y(), expected_normal.y());
+  EXPECT_DOUBLE_EQ(intersection.normal.z(), expected_normal.z());
+}
+
+TEST(SphereTests, TestRayNoIntersection) {
+  Vec3 centre = Vec3(0, 0, 2);
+  double radius = 1;
+  Sphere s = Sphere(centre, radius);
+  Vec3 ray_origin = Vec3(0, 0, 0);
+  Vec3 ray_dir = Vec3(1, 0, 0);
+  Ray ray = Ray(ray_origin, ray_dir);
+  Intersection intersection = s.intersect(ray, 0, 10);
   EXPECT_FALSE(intersection.hit);
 }
 
