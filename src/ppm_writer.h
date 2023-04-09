@@ -1,8 +1,10 @@
 #ifndef PPM_WRITER_H
 #define PPM_WRITER_H
 
-#include <image_writer.h>
-#include <image.h>
+#include "colour.h"
+#include "image_writer.h"
+#include "image.h"
+
 #include <string>
 #include <stdexcept>
 #include <fstream>
@@ -26,7 +28,7 @@ void PPMWriter::write_image(Image &image) const {
   *file << 255 << std::endl;
   for (int j = image.get_height()-1; j >= 0; j--) {
     for (int i = 0; i < image.get_width(); i++) {
-      write_colour(*file, scale_colour(image.get_pixel(i, j)));
+      write_colour(*file, image.get_pixel(i, j));
     }
   }
 }

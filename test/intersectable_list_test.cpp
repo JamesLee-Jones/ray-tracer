@@ -9,9 +9,10 @@ TEST(IntersectableListTest, IntersectableListClosestIntersection) {
   Vec3 ray_dir = Vec3(0, 0, 1);
   Ray ray = Ray(ray_orig, ray_dir);
   Vec3 plane_normal = Vec3(0, 0, -1);
-  auto plane1 = std::make_shared<Plane>(Vec3(0, 0, 1), plane_normal);
-  auto plane2 = std::make_shared<Plane>(Vec3(0, 0, 2), plane_normal);
-  auto plane3 = std::make_shared<Plane>(Vec3(0, 0, 3), plane_normal);
+  std::shared_ptr<Material> plane_material = std::make_shared<Diffuse>(Vec3(0, 0, 0));
+  auto plane1 = std::make_shared<Plane>(Vec3(0, 0, 1), plane_normal, plane_material);
+  auto plane2 = std::make_shared<Plane>(Vec3(0, 0, 2), plane_normal, plane_material);
+  auto plane3 = std::make_shared<Plane>(Vec3(0, 0, 3), plane_normal, plane_material);
   IntersectableList list = IntersectableList();
   list.add(plane1);
   list.add(plane2);

@@ -1,4 +1,6 @@
-#include <ray.h>
+#include "ray.h"
+#include "vec3.h"
+
 #include <gtest/gtest.h>
 
 TEST(RayTests, TestDecleration) {

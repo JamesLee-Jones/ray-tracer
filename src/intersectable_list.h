@@ -1,7 +1,8 @@
 #ifndef INTERSECTABLE_LIST_H
 #define INTERSECTABLE_LIST_H
 
-#include <intersectable.h>
+#include "intersectable.h"
+#include "ray.h"
 
 #include <memory>
 #include <vector>

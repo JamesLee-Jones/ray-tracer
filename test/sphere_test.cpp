@@ -6,7 +6,8 @@
 TEST(SphereTests, TestDeclaration) {
   Vec3 centre = Vec3(0, 0, 0);
   double radius = 1;
-  Sphere s = Sphere(centre, radius);
+  std::shared_ptr<Material> sphere_material = std::make_shared<Diffuse>(Vec3(0, 0, 0));
+  Sphere s = Sphere(centre, radius, sphere_material);
   EXPECT_DOUBLE_EQ(s.getCenter().x(), centre.x());
   EXPECT_DOUBLE_EQ(s.getCenter().y(), centre.y());
   EXPECT_DOUBLE_EQ(s.getCenter().z(), centre.z());
@@ -16,7 +17,8 @@ TEST(SphereTests, TestDeclaration) {
 TEST(SphereTests, TestSetters) {
   Vec3 centre = Vec3(0, 0, 0);
   double radius = 1;
-  Sphere s = Sphere(centre, radius);
+  std::shared_ptr<Material> sphere_material = std::make_shared<Diffuse>(Vec3(0, 0, 0));
+  Sphere s = Sphere(centre, radius, sphere_material);
   Vec3 new_centre = Vec3(1,1,1);
   s.setCenter(new_centre);
   EXPECT_DOUBLE_EQ(s.getCenter().x(), new_centre.x());
@@ -34,7 +36,8 @@ TEST(SphereTests, TestSetters) {
 TEST(SphereTests, TestNormalAt) {
   Vec3 centre = Vec3(0, 0, 0);
   double radius = 1;
-  Sphere s = Sphere(centre, radius);
+  std::shared_ptr<Material> sphere_material = std::make_shared<Diffuse>(Vec3(0, 0, 0));
+  Sphere s = Sphere(centre, radius, sphere_material);
   Vec3 normal_point = Vec3(1, 0, 0);
   EXPECT_DOUBLE_EQ(s.normalAt(normal_point).x(), normal_point.x());
   EXPECT_DOUBLE_EQ(s.normalAt(normal_point).y(), normal_point.y());
@@ -48,7 +51,8 @@ TEST(SphereTests, TestNormalAt) {
 TEST(SphereTests, TestExternalRayIntersection) {
   Vec3 centre = Vec3(0, 0, 2);
   double radius = 1;
-  Sphere s = Sphere(centre, radius);
+  std::shared_ptr<Material> sphere_material = std::make_shared<Diffuse>(Vec3(0, 0, 0));
+  Sphere s = Sphere(centre, radius, sphere_material);
   Vec3 ray_origin = Vec3(0, 0, 0);
   Vec3 ray_dir = Vec3(0, 0, 1);
   Ray ray = Ray(ray_origin, ray_dir);
@@ -67,7 +71,8 @@ TEST(SphereTests, TestExternalRayIntersection) {
 TEST(SphereTests, TestInternalRayIntersection) {
   Vec3 centre = Vec3(0, 0, 0);
   double radius = 1;
-  Sphere s = Sphere(centre, radius);
+  std::shared_ptr<Material> sphere_material = std::make_shared<Diffuse>(Vec3(0, 0, 0));
+  Sphere s = Sphere(centre, radius, sphere_material);
   Vec3 ray_origin = Vec3(0, 0, 0);
   Vec3 ray_dir = Vec3(0, 0, 1);
   Ray ray = Ray(ray_origin, ray_dir);
@@ -86,7 +91,8 @@ TEST(SphereTests, TestInternalRayIntersection) {
 TEST(SphereTests, TestRayNoIntersection) {
   Vec3 centre = Vec3(0, 0, 2);
   double radius = 1;
-  Sphere s = Sphere(centre, radius);
+  std::shared_ptr<Material> sphere_material = std::make_shared<Diffuse>(Vec3(0, 0, 0));
+  Sphere s = Sphere(centre, radius, sphere_material);
   Vec3 ray_origin = Vec3(0, 0, 0);
   Vec3 ray_dir = Vec3(1, 0, 0);
   Ray ray = Ray(ray_origin, ray_dir);
