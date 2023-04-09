@@ -14,7 +14,7 @@ class Sphere : public Intersectable {
   Vec3 getCenter() { return c; }
   void setCenter(Vec3 centre) { c = centre; }
 
-  double getRadius() { return r; }
+  double getRadius() const { return r; }
   void setRadius(double radius) { r = radius; }
 
   Vec3 normalAt(Vec3 pos) const;
@@ -48,8 +48,9 @@ Intersection Sphere::intersect(const Ray &ray, double mu_min, double mu_max) con
   else return intersection;
 
   intersection.hit = true;
+  intersection.mu = mu;
   intersection.point = ray.at(mu);
-  intersection.normal = Sphere::normalAt(intersection.point);
+  intersection.set_intersection_normal(ray, Sphere::normalAt(intersection.point));
   return intersection;
 }
 

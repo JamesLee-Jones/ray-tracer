@@ -1,0 +1,27 @@
+#include <intersectable_list.h>
+#include <ray.h>
+#include <plane.h>
+#include <memory>
+#include <gtest/gtest.h>
+
+TEST(IntersectableListTest, IntersectableListClosestIntersection) {
+  Vec3 ray_orig = Vec3(0, 0, 0);
+  Vec3 ray_dir = Vec3(0, 0, 1);
+  Ray ray = Ray(ray_orig, ray_dir);
+  Vec3 plane_normal = Vec3(0, 0, -1);
+  auto plane1 = std::make_shared<Plane>(Vec3(0, 0, 1), plane_normal);
+  auto plane2 = std::make_shared<Plane>(Vec3(0, 0, 2), plane_normal);
+  auto plane3 = std::make_shared<Plane>(Vec3(0, 0, 3), plane_normal);
+  IntersectableList list = IntersectableList();
+  list.add(plane1);
+  list.add(plane2);
+  list.add(plane3);
+  Intersection intersection = list.intersect(ray, 0, 5);
+  ASSERT_TRUE(intersection.hit);
+  ASSERT_DOUBLE_EQ(intersection.point.x(), 0);
+  ASSERT_DOUBLE_EQ(intersection.point.y(), 0);
+  ASSERT_DOUBLE_EQ(intersection.point.z(), 1);
+  ASSERT_DOUBLE_EQ(intersection.normal.x(), plane_normal.x());
+  ASSERT_DOUBLE_EQ(intersection.normal.y(), plane_normal.y());
+  ASSERT_DOUBLE_EQ(intersection.normal.z(), plane_normal.z());
+}

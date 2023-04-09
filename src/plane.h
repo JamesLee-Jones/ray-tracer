@@ -8,7 +8,7 @@
 class Plane : public Intersectable {
  public:
   // TODO: Throw an error if the normal is (0,0,0)
-  Plane(Vec3 &point, Vec3 &normal) : p{point}, n{normal} {}
+  Plane(Vec3 point, Vec3 normal) : p{point}, n{normal} {}
 
   Vec3 getPoint() { return p; }
   void setPoint(Vec3 &point) { p = point; }
@@ -29,8 +29,9 @@ Intersection Plane::intersect(const Ray &ray, double mu_min, double mu_max) cons
   if (mu > mu_max || mu < mu_min) return intersection; // The ray does not intersect in the valid range
 
   intersection.hit = true;
+  intersection.mu = mu;
   intersection.point = ray.at(mu);
-  intersection.normal = n;
+  intersection.set_intersection_normal(ray, n);
   return intersection;
 }
 
