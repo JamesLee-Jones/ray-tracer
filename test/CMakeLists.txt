@@ -26,6 +26,15 @@ target_link_libraries(camera_test GTest::gtest_main)
 add_executable(intersectable_list_test intersectable_list_test.cpp)
 target_link_libraries(intersectable_list_test GTest::gtest_main)
 
+add_executable(ppm_writer_test ppm_writer_test.cpp)
+target_link_libraries(ppm_writer_test GTest::gtest_main)
+
+add_executable(colour_test colour_test.cpp)
+target_link_libraries(colour_test GTest::gtest_main)
+
+add_executable(image_test image_test.cpp)
+target_link_libraries(image_test GTest::gtest_main)
+
 include(GoogleTest)
 include_directories(${PROJECT_SOURCE_DIR}/src)
 
@@ -35,3 +44,6 @@ gtest_discover_tests(sphere_test)
 gtest_discover_tests(plane_test)
 gtest_discover_tests(camera_test)
 gtest_discover_tests(intersectable_list_test)
+gtest_discover_tests(ppm_writer_test)
+gtest_discover_tests(colour_test)
+gtest_discover_tests(image_test)
