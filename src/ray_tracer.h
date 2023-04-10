@@ -7,6 +7,9 @@
 #include "image.h"
 #include "material.h"
 
+#include <functional>
+#include <thread>
+
 class RayTracer {
  public:
   RayTracer(const Camera &camera, const IntersectableList &world, Image &image) : camera{camera},
@@ -36,11 +39,24 @@ class RayTracer {
     return (1 - t) * Vec3(1, 1, 1) + t * Vec3(0.5, 0.7, 1);
   }
 
-  void process(int max_depth, int samples) {
+  void process(int max_depth, int samples, int num_threads=1) {
+    std::vector<std::thread> threads = {};
+    for (int t_id = 0; t_id < num_threads; t_id++) {
+      std::thread t {&RayTracer::process_thread, this, max_depth, samples, t_id, num_threads};
+      threads.push_back(std::move(t));
+    }
+
+    for (int t_id = 0; t_id < num_threads; t_id++) {
+      threads[t_id].join();
+    }
+  }
+
+ private:
+  void process_thread(int max_depth, int samples, int thread_id, int num_threads) {
     std::uniform_real_distribution<double> unif(0, 1);
     std::random_device dev;
     std::mt19937 re(dev());
-    for (int j = image.get_height()-1; j >= 0; j--) {
+    for (int j = image.get_height()-1-thread_id; j >= 0; j-=num_threads) {
       for (int i = 0; i < image.get_width(); i++) {
         Vec3 pixel_col = Vec3(0, 0, 0);
         for (int k = 0; k < samples; k++) {
@@ -54,7 +70,6 @@ class RayTracer {
     }
   }
 
- private:
   const Camera &camera;
   const IntersectableList &world;
   Image &image;
