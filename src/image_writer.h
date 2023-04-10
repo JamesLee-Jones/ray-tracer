@@ -20,7 +20,7 @@ class ImageWriter {
     return is_open();
   }
 
-  bool is_open() const {
+  [[nodiscard]] bool is_open() const {
     return file->is_open();
   }
 

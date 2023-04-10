@@ -10,9 +10,9 @@ class Vec3 {
   Vec3() : e{0, 0, 0} {}
   Vec3(double x, double y, double z) : e{x, y, z} {}
 
-  double x() const { return e[0]; }
-  double y() const { return e[1]; }
-  double z() const { return e[2]; }
+  [[nodiscard]] double x() const { return e[0]; }
+  [[nodiscard]] double y() const { return e[1]; }
+  [[nodiscard]] double z() const { return e[2]; }
 
   Vec3 operator-() const { return {-e[0], -e[1], -e[2]}; }
   double operator[](int i) const { return e[i]; }
@@ -39,11 +39,11 @@ class Vec3 {
     return *this;
   }
 
-  double length() const {
+  [[nodiscard]] double length() const {
     return sqrt(e[0] * e[0] + e[1] * e[1] + e[2] * e[2]);
   }
 
-  bool near_zero(double epsilon=1e-8) const {
+  [[nodiscard]] bool near_zero(double epsilon=1e-8) const {
     return (fabs(x()) < epsilon) && (fabs(y()) < epsilon) && (fabs(z()) < epsilon);
   }
 
@@ -87,9 +87,9 @@ inline double dot(const Vec3 &u, const Vec3 &v) {
 }
 
 inline Vec3 cross (const Vec3 &u, const Vec3 &v) {
-  return Vec3(u.y() * v.z() - u.z() * v.y(),
+  return {u.y() * v.z() - u.z() * v.y(),
               u.z() * v.x() - u.x() * v.z(),
-              u.x() * v.y() - u.y() * v.x());
+              u.x() * v.y() - u.y() * v.x()};
 }
 
 inline Vec3 normalize(const Vec3 &u) {
@@ -97,7 +97,7 @@ inline Vec3 normalize(const Vec3 &u) {
 }
 
 inline Vec3 reflect(const Vec3 &i, const Vec3 &n) {
-  if (!n.length() == 1) {
+  if (fabs(n.length() - 1) > 1e-8) {
     throw std::invalid_argument("n must be normalised.");
   }
   return i - 2.0 * dot(n, i) * n;
@@ -125,9 +125,5 @@ inline static Vec3 random_in_unit_sphere() {
 inline static Vec3 random_unit_vector() {
   return normalize(random_vector());
 }
-
-
-
-
 
 #endif //VEC3_H

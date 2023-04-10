@@ -57,8 +57,7 @@ Intersection Sphere::intersect(const Ray &ray, double mu_min, double mu_max) con
   bool mu2_valid = mu_max >= mu2 && mu2 >= mu_min;
 
   double mu;
-  if (mu1_valid && mu2_valid) mu = mu1;
-  else if (mu1_valid) mu = mu1;
+  if ((mu1_valid && mu2_valid) || mu1_valid) mu = mu1;
   else if (mu2_valid) mu = mu2;
   else return intersection;
 
