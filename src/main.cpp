@@ -25,7 +25,7 @@ int main() {
   world.add(std::make_shared<Plane>(Vec3(0, -0.5, 0), Vec3(0, 1, 0), mat_plane));
 
   RayTracer ray_tracer = RayTracer(camera, world, image);
-  ray_tracer.process(50, 100, 5);
+  ray_tracer.process(50, 100, 10);
 
   iw.open();
   iw.write_image(image);

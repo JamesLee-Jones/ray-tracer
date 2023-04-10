@@ -20,8 +20,8 @@ class Image {
     image->at(image->size() - 1 - y).at(x) = col;
   }
 
-  int get_width() { return image->at(0).size(); }
-  int get_height() { return image->size(); }
+  int get_width() { return (int)image->at(0).size(); }
+  int get_height() { return (int)image->size(); }
 
  private:
   std::unique_ptr<image_t> image;

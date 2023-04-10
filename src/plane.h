@@ -13,6 +13,8 @@ class Plane : public Intersectable {
   Plane(Vec3 point, Vec3 normal, std::shared_ptr<Material> material) : p{point}, n{normal}, material{std::move(material)} {
     if (normal.near_zero()) {
       throw std::invalid_argument("Plane must have non-zero normal.");
+    } else if (fabs(normal.length() - 1) > 1e-8) {
+      throw std::invalid_argument("Plane normal must have unit length.");
     }
   }
 
