@@ -4,6 +4,7 @@
 #include <cmath>
 #include <stdexcept>
 #include <random>
+#include "utilities.h"
 
 class Vec3 {
  public:
@@ -104,10 +105,9 @@ inline Vec3 reflect(const Vec3 &i, const Vec3 &n) {
 }
 
 inline static Vec3 random_vector(double lower, double upper) {
-  std::uniform_real_distribution<double> unif(lower, upper);
-  std::random_device dev;
-  std::mt19937 re(dev());
-  return {unif(re), unif(re), unif(re)};
+  return {random_double(lower, upper),
+          random_double(lower, upper),
+          random_double(lower, upper)};
 }
 
 inline static Vec3 random_vector() {
