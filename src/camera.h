@@ -25,9 +25,6 @@ class Camera {
   void set_dir(Vec3 &direction) { dir = direction; }
 
   [[nodiscard]] Ray get_ray(double u, double v) const {
-//    if (u < 0 || u > 1 || v < 0 || v > 1) {
-//      throw std::invalid_argument("Both u and v must be in the range [0,1].");
-//    }
     Vec3 ray_dir = normalize(lower_left + u * horizontal + v * vertical - origin);
     return {origin, ray_dir};
   }

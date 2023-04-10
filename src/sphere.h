@@ -15,7 +15,11 @@ class Sphere : public Intersectable {
   // TODO: Throw an error if the radius is 0
   Sphere(Vec3 centre, double radius, std::shared_ptr<Material> material) : c{centre},
                                                                            r{radius},
-                                                                           material{std::move(material)} {}
+                                                                           material{std::move(material)} {
+    if (fabs(r) < 1e-8) {
+      throw std::invalid_argument("The radius must not be zero.");
+    }
+  }
 
   [[nodiscard]] Vec3 getCenter() const { return c; }
   void setCenter(Vec3 center) { c = center; }

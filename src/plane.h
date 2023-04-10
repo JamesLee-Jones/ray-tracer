@@ -5,12 +5,17 @@
 
 #include "material.h"
 #include "intersectable.h"
+#include <stdexcept>
 #include <memory>
 
 class Plane : public Intersectable {
  public:
   // TODO: Throw an error if the normal is (0,0,0)
-  Plane(Vec3 point, Vec3 normal, std::shared_ptr<Material> material) : p{point}, n{normal}, material{std::move(material)} {}
+  Plane(Vec3 point, Vec3 normal, std::shared_ptr<Material> material) : p{point}, n{normal}, material{std::move(material)} {
+    if (normal.near_zero()) {
+      throw std::invalid_argument("The normal must not be zero.");
+    }
+  }
 
   Vec3 getPoint() { return p; }
   void setPoint(Vec3 &point) { p = point; }

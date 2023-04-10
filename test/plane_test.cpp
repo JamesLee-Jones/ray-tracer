@@ -65,3 +65,10 @@ TEST(PlaneTests, TestRayIntersection) {
   intersection = plane.intersect(ray, 0, 10);
   EXPECT_FALSE(intersection.hit);
 }
+
+TEST(PlaneTest, TestZeroNormal) {
+  Vec3 point = Vec3(0, 0, 0);
+  Vec3 normal = Vec3(0, 0, 0);
+  std::shared_ptr<Material> plane_material = std::make_shared<Diffuse>(Vec3(0, 0, 0));
+  EXPECT_THROW(Plane(point, normal, plane_material), std::invalid_argument);
+}

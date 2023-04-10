@@ -26,9 +26,9 @@ class Diffuse : public Material {
   Vec3 albedo;
 };
 
-class Metal : public Material {
+class Specular : public Material {
  public:
-  explicit Metal(const Vec3 &colour) : albedo{colour} {}
+  explicit Specular(const Vec3 &colour) : albedo{colour} {}
 
   bool scatter(const Ray &ray_in, const Intersection &intersection, Vec3 &attenuation, Ray &scattered) const override {
     Vec3 reflected_ray = reflect(normalize(ray_in.direction()), intersection.normal);
