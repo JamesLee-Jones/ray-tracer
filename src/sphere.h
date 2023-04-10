@@ -17,7 +17,7 @@ class Sphere : public Intersectable {
                                                                            r{radius},
                                                                            material{std::move(material)} {
     if (fabs(r) < 1e-8) {
-      throw std::invalid_argument("The radius must not be zero.");
+      throw std::invalid_argument("Sphere must have non-zero radius.");
     }
   }
 

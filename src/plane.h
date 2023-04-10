@@ -10,10 +10,9 @@
 
 class Plane : public Intersectable {
  public:
-  // TODO: Throw an error if the normal is (0,0,0)
   Plane(Vec3 point, Vec3 normal, std::shared_ptr<Material> material) : p{point}, n{normal}, material{std::move(material)} {
     if (normal.near_zero()) {
-      throw std::invalid_argument("The normal must not be zero.");
+      throw std::invalid_argument("Plane must have non-zero normal.");
     }
   }
 

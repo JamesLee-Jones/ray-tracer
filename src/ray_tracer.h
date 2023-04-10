@@ -38,7 +38,8 @@ class RayTracer {
 
   void process(int max_depth, int samples) {
     std::uniform_real_distribution<double> unif(0, 1);
-    std::default_random_engine re;
+    std::random_device dev;
+    std::mt19937 re(dev());
     for (int j = image.get_height()-1; j >= 0; j--) {
       for (int i = 0; i < image.get_width(); i++) {
         Vec3 pixel_col = Vec3(0, 0, 0);
