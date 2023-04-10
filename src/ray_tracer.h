@@ -6,6 +6,7 @@
 #include "intersectable_list.h"
 #include "image.h"
 #include "material.h"
+#include "utilities.h"
 
 #include <functional>
 #include <thread>
@@ -53,15 +54,12 @@ class RayTracer {
 
  private:
   void process_thread(int max_depth, int samples, int thread_id, int num_threads) {
-    std::uniform_real_distribution<double> unif(0, 1);
-    std::random_device dev;
-    std::mt19937 re(dev());
     for (int j = image.get_height()-1-thread_id; j >= 0; j-=num_threads) {
       for (int i = 0; i < image.get_width(); i++) {
         Vec3 pixel_col = Vec3(0, 0, 0);
         for (int k = 0; k < samples; k++) {
-          auto u = (double(i) + unif(re)) / (image.get_width()-1);
-          auto v = (double(j) + unif(re)) / (image.get_height()-1);
+          auto u = (double(i) + random_double()) / (image.get_width()-1);
+          auto v = (double(j) + random_double()) / (image.get_height()-1);
           Ray ray = camera.get_ray(u, v);
           pixel_col += ray_colour(ray, max_depth);
         }
