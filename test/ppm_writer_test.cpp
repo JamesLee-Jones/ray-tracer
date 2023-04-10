@@ -26,10 +26,10 @@ TEST(PPMWriterTest, PPMWriterClose) {
 TEST(PPMWriterTest, PPMWriterWriteImage) {
   std::string filename = "test.ppm";
   Image image = Image(2, 2);
-  image.set_pixel(0, 1, Vec3(1, 0, 0));
-  image.set_pixel(1, 1, Vec3(0, 1, 0));
-  image.set_pixel(0, 0, Vec3(0, 0, 1));
-  image.set_pixel(1, 0, Vec3(1, 1, 1));
+  image.set_pixel(0, 1, Vec3(255, 0, 0));
+  image.set_pixel(1, 1, Vec3(0, 255, 0));
+  image.set_pixel(0, 0, Vec3(0, 0, 255));
+  image.set_pixel(1, 0, Vec3(255, 255, 255));
   PPMWriter writer = PPMWriter(filename);
   writer.open();
   writer.write_image(image);

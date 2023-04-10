@@ -10,7 +10,7 @@ TEST(CameraTest, CameraDeclaration) {
   ASSERT_DOUBLE_EQ(camera.get_pos().z(), 0);
   ASSERT_DOUBLE_EQ(camera.get_dir().x(), 0);
   ASSERT_DOUBLE_EQ(camera.get_dir().y(), 0);
-  ASSERT_DOUBLE_EQ(camera.get_dir().z(), 1);
+  ASSERT_DOUBLE_EQ(camera.get_dir().z(), -1);
 
   Vec3 camera_orig = Vec3(1, 1, 1);
   Vec3 camera_direction = Vec3(-1, 4, 5);
@@ -32,7 +32,7 @@ TEST(CameraTest, CameraSetters) {
   ASSERT_DOUBLE_EQ(camera.get_pos().z(), camera_orig.z());
   ASSERT_DOUBLE_EQ(camera.get_dir().x(), 0);
   ASSERT_DOUBLE_EQ(camera.get_dir().y(), 0);
-  ASSERT_DOUBLE_EQ(camera.get_dir().z(), 1);
+  ASSERT_DOUBLE_EQ(camera.get_dir().z(), -1);
 
   Vec3 camera_direction = Vec3(-1, 4, 5);
   camera.set_dir(camera_direction);

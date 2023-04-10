@@ -1,7 +1,8 @@
 #ifndef INTERSECTABLE_LIST_H
 #define INTERSECTABLE_LIST_H
 
-#include <intersectable.h>
+#include "intersectable.h"
+#include "ray.h"
 
 #include <memory>
 #include <vector>
@@ -16,7 +17,7 @@ class IntersectableList : public Intersectable {
   void add(const shared_ptr<Intersectable>& obj) { objects.push_back(obj); }
   void clear() { objects.clear(); }
 
-  Intersection intersect(const Ray &r, double mu_min, double mu_max) const override;
+  [[nodiscard]] Intersection intersect(const Ray &r, double mu_min, double mu_max) const override;
 
  private:
   std::vector<shared_ptr<Intersectable>> objects;

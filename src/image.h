@@ -1,10 +1,10 @@
 #ifndef IMAGE_H
 #define IMAGE_H
 
+#include "vec3.h"
+
 #include <memory>
 #include <vector>
-#include <colour.h>
-#include <vec3.h>
 
 using image_t = std::vector<std::vector<Vec3>>;
 

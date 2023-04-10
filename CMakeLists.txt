@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.25)
 project(ray_tracer)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 23)
 
 enable_testing()
 

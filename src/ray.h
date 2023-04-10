@@ -1,23 +1,32 @@
 #ifndef RAY_H
 #define RAY_H
 
-#include <vec3.h>
+#include "vec3.h"
+
+#include <stdexcept>
+#include <limits>
 
 class Ray {
  public:
-  // TODO: Throw an error if the direction is (0,0,0)
-  Ray(Vec3 origin, Vec3 direction) : orig{origin}, dir{direction} {}
+  Ray() = default;
+  Ray(Vec3 origin, Vec3 direction) : orig{origin}, dir{direction} {
+    if (dir.near_zero()) {
+      throw std::invalid_argument("Ray must have non-zero direction.");
+    }
+  }
 
-  Vec3 at(double mu) const {
+  [[nodiscard]] Vec3 at(double mu) const {
     return orig + mu * dir;
   }
 
-  Vec3 origin() const { return orig; }
-  Vec3 direction() const { return dir; }
+  [[nodiscard]] Vec3 origin() const { return orig; }
+  [[nodiscard]] Vec3 direction() const { return dir; }
 
  private:
   Vec3 orig;
   Vec3 dir;
 };
+
+
 
 #endif //RAY_H

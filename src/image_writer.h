@@ -7,9 +7,6 @@
 #include <utility>
 #include <vector>
 #include <memory>
-#include <image.h>
-#include <colour.h>
-#include <vec3.h>
 
 class ImageWriter {
  public:

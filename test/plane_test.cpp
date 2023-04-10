@@ -1,12 +1,15 @@
 #include <vec3.h>
 #include <ray.h>
 #include <plane.h>
+#include <material.h>
 #include <gtest/gtest.h>
+#include <memory>
 
 TEST(PlaneTests, PlaneDeclaration) {
   Vec3 plane_origin = Vec3(0, 0, 0);
   Vec3 plane_norm = Vec3(0, 1, 0);
-  Plane plane = Plane(plane_origin, plane_norm);
+  std::shared_ptr<Material> plane_material = std::make_shared<Diffuse>(Vec3(0, 0, 0));
+  Plane plane = Plane(plane_origin, plane_norm, plane_material);
   ASSERT_DOUBLE_EQ(plane.getNormal().x(), plane_norm.x());
   ASSERT_DOUBLE_EQ(plane.getNormal().y(), plane_norm.y());
   ASSERT_DOUBLE_EQ(plane.getNormal().z(), plane_norm.z());
@@ -18,7 +21,8 @@ TEST(PlaneTests, PlaneDeclaration) {
 TEST(PlaneTests, TestSetters) {
   Vec3 plane_origin = Vec3(0, 0, 0);
   Vec3 plane_norm = Vec3(0, 1, 0);
-  Plane plane = Plane(plane_origin, plane_norm);
+  std::shared_ptr<Material> plane_material = std::make_shared<Diffuse>(Vec3(0, 0, 0));
+  Plane plane = Plane(plane_origin, plane_norm, plane_material);
   Vec3 new_origin = Vec3(1,1,1);
   plane.setPoint(new_origin);
   EXPECT_DOUBLE_EQ(plane.getPoint().x(), new_origin.x());
@@ -40,7 +44,8 @@ TEST(PlaneTests, TestSetters) {
 TEST(PlaneTests, TestRayIntersection) {
   Vec3 plane_origin = Vec3(0, 0, 0);
   Vec3 plane_norm = Vec3(0, 1, 0);
-  Plane plane = Plane(plane_origin, plane_norm);
+  std::shared_ptr<Material> plane_material = std::make_shared<Diffuse>(Vec3(0, 0, 0));
+  Plane plane = Plane(plane_origin, plane_norm, plane_material);
   Vec3 ray_origin = Vec3(0, 1, 0);
   Vec3 ray_dir = normalize(Vec3(1, -1, 0));
   Ray ray = Ray(ray_origin, ray_dir);
@@ -59,4 +64,11 @@ TEST(PlaneTests, TestRayIntersection) {
   ray = Ray(ray_origin, ray_dir);
   intersection = plane.intersect(ray, 0, 10);
   EXPECT_FALSE(intersection.hit);
+}
+
+TEST(PlaneTest, TestZeroNormal) {
+  Vec3 point = Vec3(0, 0, 0);
+  Vec3 normal = Vec3(0, 0, 0);
+  std::shared_ptr<Material> plane_material = std::make_shared<Diffuse>(Vec3(0, 0, 0));
+  EXPECT_THROW(Plane(point, normal, plane_material), std::invalid_argument);
 }
