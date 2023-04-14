@@ -1,9 +1,9 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
-#include "vec3.h"
-#include "ray.h"
-#include "material.h"
+#include "core/vec3.h"
+#include "../core/ray.h"
+#include "materials/material.h"
 #include "intersectable.h"
 
 #include <cmath>

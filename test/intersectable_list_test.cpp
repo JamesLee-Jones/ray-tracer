@@ -1,6 +1,6 @@
-#include <intersectable_list.h>
-#include <ray.h>
-#include <plane.h>
+#include "primatives/intersectable_list.h"
+#include "core/ray.h"
+#include "primatives/plane.h"
 #include <memory>
 #include <gtest/gtest.h>
 

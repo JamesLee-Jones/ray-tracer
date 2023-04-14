@@ -1,7 +1,7 @@
 #ifndef MATERIAL_H
 #define MATERIAL_H
 
-#include "intersectable.h"
+#include "core/intersectable.h"
 
 #include <cmath>
 #include <stdexcept>
@@ -67,20 +67,13 @@ class Refraction : public Material {
   }
 
  private:
-  static Vec3 refract(const Vec3 &v, const Vec3 &n, double eta1_over_eta2) {
-//    double n_dot_v = dot(n, v);
-//    double determinant = pow(n_dot_v, 2) + pow(1 / eta1_over_eta2, 2) - 1;
-//
-//    if (determinant <= 0) { // We cannot refract the ray
-//      return {0, 0, 0};
-//    }
-//    return eta1_over_eta2 * ((sqrt(determinant) - n_dot_v) * n + v);
+  static Vec3 refract(const Vec3 &v, const Vec3 &n, double eta) {
     double n_dot_v = dot(n, v);
-    double k = 1.0 - pow(eta1_over_eta2, 2) * (1 - pow(n_dot_v, 2));
+    double k = 1.0 - pow(eta, 2) * (1 - pow(n_dot_v, 2));
     if (k < 0) {
       return {0, 0, 0};
     } else {
-      return eta1_over_eta2 * v - (eta1_over_eta2 * n_dot_v + sqrt(k)) * n;
+      return eta * v - (eta * n_dot_v + sqrt(k)) * n;
     }
   }
 

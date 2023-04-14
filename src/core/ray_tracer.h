@@ -5,7 +5,7 @@
 #include "colour.h"
 #include "intersectable_list.h"
 #include "image.h"
-#include "material.h"
+#include "materials/material.h"
 #include "utilities.h"
 
 #include <functional>

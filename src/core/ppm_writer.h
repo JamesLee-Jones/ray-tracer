@@ -1,9 +1,9 @@
 #ifndef PPM_WRITER_H
 #define PPM_WRITER_H
 
-#include "colour.h"
-#include "image_writer.h"
-#include "image.h"
+#include "core/colour.h"
+#include "core/image_writer.h"
+#include "core/image.h"
 
 #include <string>
 #include <stdexcept>

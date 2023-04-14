@@ -1,10 +1,10 @@
 #ifndef PLANE_H
 #define PLANE_H
 
-#include "vec3.h"
+#include "core/vec3.h"
 
-#include "material.h"
-#include "intersectable.h"
+#include "materials/material.h"
+#include "../core/intersectable.h"
 #include <stdexcept>
 #include <memory>
 

@@ -1,7 +1,7 @@
-#include <vec3.h>
-#include <ray.h>
-#include <plane.h>
-#include <material.h>
+#include "core/vec3.h"
+#include "core/ray.h"
+#include "primatives/plane.h"
+#include "materials/material.h"
 #include <gtest/gtest.h>
 #include <memory>
 

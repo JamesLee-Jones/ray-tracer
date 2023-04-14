@@ -1,5 +1,5 @@
-#include <colour.h>
-#include <vec3.h>
+#include "core/colour.h"
+#include "core/vec3.h"
 #include <gtest/gtest.h>
 
 TEST(ColourTest, ScaleColour) {

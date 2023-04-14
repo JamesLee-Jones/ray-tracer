@@ -1,1 +1,1 @@
-add_executable(ray_tracer main.cpp vec3.h ray.h sphere.h intersectable.h plane.h camera.h intersectable_list.h image_writer.h ppm_writer.h image.h colour.h material.h ray_tracer.h utilities.h)
+add_executable(ray_tracer main.cpp core/vec3.h core/ray.h primatives/sphere.h core/intersectable.h primatives/plane.h core/camera.h primatives/intersectable_list.h core/image_writer.h core/ppm_writer.h core/image.h core/colour.h materials/material.h core/ray_tracer.h core/utilities.h)

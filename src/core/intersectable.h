@@ -1,7 +1,7 @@
 #ifndef INTERSECTABLE_H
 #define INTERSECTABLE_H
 
-#include "ray.h"
+#include "core/ray.h"
 
 #include <memory>
 

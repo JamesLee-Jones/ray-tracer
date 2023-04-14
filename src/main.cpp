@@ -1,10 +1,10 @@
-#include "image.h"
-#include "ppm_writer.h"
-#include "camera.h"
-#include "sphere.h"
-#include "plane.h"
-#include "intersectable_list.h"
-#include "ray_tracer.h"
+#include "core/image.h"
+#include "core/ppm_writer.h"
+#include "core/camera.h"
+#include "primatives/sphere.h"
+#include "primatives/plane.h"
+#include "primatives/intersectable_list.h"
+#include "core/ray_tracer.h"
 
 #include <memory>
 

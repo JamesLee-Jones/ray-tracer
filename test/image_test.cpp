@@ -1,5 +1,5 @@
-#include <image.h>
-#include <vec3.h>
+#include "core/image.h"
+#include "core/vec3.h"
 #include <gtest/gtest.h>
 
 TEST(ImageTest, ImageDeclaration) {

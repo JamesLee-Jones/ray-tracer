@@ -4,7 +4,7 @@
 #include <cmath>
 #include <stdexcept>
 #include <random>
-#include "utilities.h"
+#include "core/utilities.h"
 
 class Vec3 {
  public:

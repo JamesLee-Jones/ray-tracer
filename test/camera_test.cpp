@@ -1,6 +1,6 @@
-#include <camera.h>
-#include <vec3.h>
-#include <ray.h>
+#include "core/camera.h"
+#include "core/vec3.h"
+#include "core/ray.h"
 #include <gtest/gtest.h>
 
 TEST(CameraTest, CameraDeclaration) {

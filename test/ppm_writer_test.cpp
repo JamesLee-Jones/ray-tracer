@@ -1,8 +1,8 @@
 #include <vector>
 #include <fstream>
-#include <vec3.h>
-#include <image.h>
-#include <ppm_writer.h>
+#include "core/vec3.h"
+#include "core/image.h"
+#include "core/ppm_writer.h"
 #include <gtest/gtest.h>
 
 TEST(PPMWriterTest, PPMWriterDeclaration) {
