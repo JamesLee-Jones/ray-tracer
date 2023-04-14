@@ -1,14 +1,14 @@
 #ifndef PLANE_H
 #define PLANE_H
 
-#include "vec3.h"
+#include "core/material.h"
+#include "core/primitive.h"
+#include "core/vec3.h"
 
-#include "material.h"
-#include "intersectable.h"
-#include <stdexcept>
 #include <memory>
+#include <stdexcept>
 
-class Plane : public Intersectable {
+class Plane : public Primitive {
  public:
   Plane(Vec3 point, Vec3 normal, std::shared_ptr<Material> material) : p{point}, n{normal}, material{std::move(material)} {
     if (normal.near_zero()) {

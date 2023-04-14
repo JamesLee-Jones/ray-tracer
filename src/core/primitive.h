@@ -1,5 +1,5 @@
-#ifndef INTERSECTABLE_H
-#define INTERSECTABLE_H
+#ifndef PRIMITIVE_H
+#define PRIMITIVE_H
 
 #include "ray.h"
 
@@ -21,9 +21,9 @@ struct Intersection {
   }
 };
 
-class Intersectable {
+class Primitive {
  public:
   [[nodiscard]] virtual Intersection intersect(const Ray &r, double mu_min, double mu_max) const = 0;
 };
 
-#endif //INTERSECTABLE_H
+#endif //PRIMITIVE_H

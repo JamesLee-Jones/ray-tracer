@@ -1,7 +1,9 @@
-#include <intersectable_list.h>
-#include <ray.h>
-#include <plane.h>
+#include "materials/diffuse.h"
+#include "primitives/primitive_list.h"
+#include "primitives/plane.h"
+
 #include <memory>
+
 #include <gtest/gtest.h>
 
 TEST(IntersectableListTest, IntersectableListClosestIntersection) {
@@ -13,7 +15,7 @@ TEST(IntersectableListTest, IntersectableListClosestIntersection) {
   auto plane1 = std::make_shared<Plane>(Vec3(0, 0, 1), plane_normal, plane_material);
   auto plane2 = std::make_shared<Plane>(Vec3(0, 0, 2), plane_normal, plane_material);
   auto plane3 = std::make_shared<Plane>(Vec3(0, 0, 3), plane_normal, plane_material);
-  IntersectableList list = IntersectableList();
+  PrimitiveList list = PrimitiveList();
   list.add(plane1);
   list.add(plane2);
   list.add(plane3);

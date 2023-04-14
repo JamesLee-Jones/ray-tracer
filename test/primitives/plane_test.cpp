@@ -1,8 +1,11 @@
-#include <vec3.h>
-#include <ray.h>
-#include <plane.h>
-#include <material.h>
+#include "core/material.h"
+#include "core/ray.h"
+#include "core/vec3.h"
+#include "materials/diffuse.h"
+#include "primitives/plane.h"
+
 #include <gtest/gtest.h>
+
 #include <memory>
 
 TEST(PlaneTests, PlaneDeclaration) {

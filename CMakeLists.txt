@@ -5,5 +5,6 @@ set(CMAKE_CXX_STANDARD 23)
 
 enable_testing()
 
+include_directories(src)
 add_subdirectory(src)
 add_subdirectory(test)

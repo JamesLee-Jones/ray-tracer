@@ -1,12 +1,12 @@
 #ifndef IMAGE_WRITER_H
 #define IMAGE_WRITER_H
 
-#include <string>
 #include <fstream>
 #include <iostream>
+#include <memory>
+#include <string>
 #include <utility>
 #include <vector>
-#include <memory>
 
 class ImageWriter {
  public:

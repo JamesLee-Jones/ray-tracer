@@ -2,13 +2,13 @@
 #define PPM_WRITER_H
 
 #include "colour.h"
-#include "image_writer.h"
 #include "image.h"
+#include "image_writer.h"
 
-#include <string>
-#include <stdexcept>
 #include <fstream>
 #include <iostream>
+#include <string>
+#include <stdexcept>
 #include <utility>
 
 class PPMWriter : public ImageWriter {

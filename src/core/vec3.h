@@ -1,10 +1,11 @@
 #ifndef VEC3_H
 #define VEC3_H
 
-#include <cmath>
-#include <stdexcept>
-#include <random>
 #include "utilities.h"
+
+#include <cmath>
+#include <random>
+#include <stdexcept>
 
 class Vec3 {
  public:
