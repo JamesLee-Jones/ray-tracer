@@ -1,4 +1,5 @@
 #include "core/vec3.h"
+
 #include <gtest/gtest.h>
 
 TEST(VectorTests, TestDefaultDeclaration) {

@@ -3,9 +3,9 @@
 
 #include "camera.h"
 #include "colour.h"
-#include "intersectable_list.h"
 #include "image.h"
-#include "materials/material.h"
+#include "primitive.h"
+#include "material.h"
 #include "utilities.h"
 
 #include <functional>
@@ -13,9 +13,9 @@
 
 class RayTracer {
  public:
-  RayTracer(const Camera &camera, const IntersectableList &world, Image &image) : camera{camera},
-                                                                                  world{world},
-                                                                                  image{image} {}
+  RayTracer(const Camera &camera, const Primitive &world, Image &image) : camera{camera},
+                                                                          world{world},
+                                                                          image{image} {}
 
   Vec3 ray_colour(Ray &ray, int max_depth) {
     if (max_depth <= 0) return {0, 0, 0};
@@ -69,7 +69,7 @@ class RayTracer {
   }
 
   const Camera &camera;
-  const IntersectableList &world;
+  const Primitive &world;
   Image &image;
 };
 

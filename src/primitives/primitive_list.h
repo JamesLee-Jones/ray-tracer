@@ -1,7 +1,7 @@
-#ifndef INTERSECTABLE_LIST_H
-#define INTERSECTABLE_LIST_H
+#ifndef PRIMITIVE_LIST_H
+#define PRIMITIVE_LIST_H
 
-#include "core/intersectable.h"
+#include "core/primitive.h"
 #include "core/ray.h"
 
 #include <memory>
@@ -9,21 +9,21 @@
 
 using std::shared_ptr;
 
-class IntersectableList : public Intersectable {
+class PrimitiveList : public Primitive {
  public:
-  IntersectableList() = default;
-  explicit IntersectableList(shared_ptr<Intersectable> &obj) { add(obj); }
+  PrimitiveList() = default;
+  explicit PrimitiveList(shared_ptr<Primitive> &obj) { add(obj); }
 
-  void add(const shared_ptr<Intersectable>& obj) { objects.push_back(obj); }
+  void add(const shared_ptr<Primitive>& obj) { objects.push_back(obj); }
   void clear() { objects.clear(); }
 
   [[nodiscard]] Intersection intersect(const Ray &r, double mu_min, double mu_max) const override;
 
  private:
-  std::vector<shared_ptr<Intersectable>> objects;
+  std::vector<shared_ptr<Primitive>> objects;
 };
 
-Intersection IntersectableList::intersect(const Ray &r, double mu_min, double mu_max) const {
+Intersection PrimitiveList::intersect(const Ray &r, double mu_min, double mu_max) const {
   Intersection closest = Intersection();
   for (const auto& obj : objects) {
     Intersection curr_intersection = obj->intersect(r, mu_min, mu_max);
@@ -34,4 +34,4 @@ Intersection IntersectableList::intersect(const Ray &r, double mu_min, double mu
   return closest;
 }
 
-#endif //INTERSECTABLE_LIST_H
+#endif //PRIMITIVE_LIST_H

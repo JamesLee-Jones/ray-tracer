@@ -2,17 +2,16 @@
 #define SPHERE_H
 
 #include "core/vec3.h"
-#include "../core/ray.h"
-#include "materials/material.h"
-#include "intersectable.h"
+#include "core/ray.h"
+#include "core/material.h"
+#include "core/primitive.h"
 
 #include <cmath>
 #include <memory>
 #include <utility>
 
-class Sphere : public Intersectable {
+class Sphere : public Primitive {
  public:
-  // TODO: Throw an error if the radius is 0
   Sphere(Vec3 centre, double radius, std::shared_ptr<Material> material) : c{centre},
                                                                            r{radius},
                                                                            material{std::move(material)} {

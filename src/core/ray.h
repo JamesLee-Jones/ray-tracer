@@ -1,10 +1,10 @@
 #ifndef RAY_H
 #define RAY_H
 
-#include "core/vec3.h"
+#include "vec3.h"
 
-#include <stdexcept>
 #include <limits>
+#include <stdexcept>
 
 class Ray {
  public:

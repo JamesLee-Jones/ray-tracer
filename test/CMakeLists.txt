@@ -8,31 +8,31 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-add_executable(vec3_test vec3_test.cpp)
+add_executable(vec3_test core/vec3_test.cpp)
 target_link_libraries(vec3_test GTest::gtest_main)
 
-add_executable(ray_test ray_test.cpp)
+add_executable(ray_test core/ray_test.cpp)
 target_link_libraries(ray_test GTest::gtest_main)
 
-add_executable(sphere_test sphere_test.cpp)
+add_executable(sphere_test primitives/sphere_test.cpp)
 target_link_libraries(sphere_test GTest::gtest_main)
 
-add_executable(plane_test plane_test.cpp)
+add_executable(plane_test primitives/plane_test.cpp)
 target_link_libraries(plane_test GTest::gtest_main)
 
-add_executable(camera_test camera_test.cpp)
+add_executable(camera_test core/camera_test.cpp)
 target_link_libraries(camera_test GTest::gtest_main)
 
-add_executable(intersectable_list_test intersectable_list_test.cpp)
+add_executable(intersectable_list_test primitives/intersectable_list_test.cpp)
 target_link_libraries(intersectable_list_test GTest::gtest_main)
 
-add_executable(ppm_writer_test ppm_writer_test.cpp)
+add_executable(ppm_writer_test core/ppm_writer_test.cpp)
 target_link_libraries(ppm_writer_test GTest::gtest_main)
 
-add_executable(colour_test colour_test.cpp)
+add_executable(colour_test core/colour_test.cpp)
 target_link_libraries(colour_test GTest::gtest_main)
 
-add_executable(image_test image_test.cpp)
+add_executable(image_test core/image_test.cpp)
 target_link_libraries(image_test GTest::gtest_main)
 
 include(GoogleTest)

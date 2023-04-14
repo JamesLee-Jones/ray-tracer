@@ -4,8 +4,8 @@
 #include "vec3.h"
 
 #include <algorithm>
-#include <iostream>
 #include <cmath>
+#include <iostream>
 
 Vec3 convert_colour(Vec3 colour, int samples=1) {
   auto r = colour.x();

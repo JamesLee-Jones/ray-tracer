@@ -1,6 +1,8 @@
-#include "core/vec3.h"
-#include "primatives/sphere.h"
 #include "core/ray.h"
+#include "core/vec3.h"
+#include "materials/diffuse.h"
+#include "primitives/sphere.h"
+
 #include <gtest/gtest.h>
 
 TEST(SphereTests, TestDeclaration) {

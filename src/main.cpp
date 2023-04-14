@@ -1,10 +1,13 @@
+#include "core/camera.h"
 #include "core/image.h"
 #include "core/ppm_writer.h"
-#include "core/camera.h"
-#include "primatives/sphere.h"
-#include "primatives/plane.h"
-#include "primatives/intersectable_list.h"
 #include "core/ray_tracer.h"
+#include "materials/diffuse.h"
+#include "materials/refraction.h"
+#include "materials/specular.h"
+#include "primitives/primitive_list.h"
+#include "primitives/plane.h"
+#include "primitives/sphere.h"
 
 #include <memory>
 
@@ -14,7 +17,7 @@ int main() {
 
   auto camera = Camera();
 
-  IntersectableList world = IntersectableList();
+  PrimitiveList world = PrimitiveList();
   auto mat_center = std::make_shared<Diffuse>(Vec3(0.7, 0.3, 0.3));
   auto mat_left = std::make_shared<Refraction>(1.5);
   auto mat_right = std::make_shared<Specular>(Vec3(0.8, 0.6, 0.2));
