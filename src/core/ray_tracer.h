@@ -1,10 +1,10 @@
-#ifndef RAY_TRACER_SRC_RAY_TRACER_H_
-#define RAY_TRACER_SRC_RAY_TRACER_H_
+#ifndef RAY_TRACER_H
+#define RAY_TRACER_H
 
 #include "camera.h"
 #include "colour.h"
 #include "image.h"
-#include "primitive.h"
+#include "scene.h"
 #include "material.h"
 #include "utilities.h"
 
@@ -13,14 +13,14 @@
 
 class RayTracer {
  public:
-  RayTracer(const Camera &camera, const Primitive &world, Image &image) : camera{camera},
-                                                                          world{world},
-                                                                          image{image} {}
+  RayTracer(const Camera &camera, const Scene &scene, Image &image) : camera{camera},
+                                                                      scene{scene},
+                                                                      image{image} {}
 
   Vec3 ray_colour(Ray &ray, int max_depth) {
     if (max_depth <= 0) return {0, 0, 0};
 
-    if (Intersection intersection = world.intersect(ray, 0.001, std::numeric_limits<double>::infinity());
+    if (Intersection intersection = scene.intersect(ray, 0.001, std::numeric_limits<double>::infinity());
         intersection.hit) {
       Ray scattered;
       Vec3 attenuation;
@@ -69,8 +69,8 @@ class RayTracer {
   }
 
   const Camera &camera;
-  const Primitive &world;
+  const Scene &scene;
   Image &image;
 };
 
-#endif //RAY_TRACER_SRC_RAY_TRACER_H_
+#endif //RAY_TRACER_H
