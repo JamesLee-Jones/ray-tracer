@@ -38,14 +38,14 @@ class Sphere : public Primitive {
 
 Vec3 Sphere::normalAt(Vec3 pos) const {
   // TODO: Assert the point is on the sphere
-  return normalize(pos - c);
+  return Vec3::normalize(pos - c);
 }
 
 Intersection Sphere::intersect(const Ray &ray, double mu_min, double mu_max) const {
   Intersection intersection;
   Vec3 delta_p = ray.origin() - c;
-  double temp1 = dot(-ray.direction(), delta_p);
-  double determinant = pow(temp1, 2) - dot(delta_p, delta_p) + pow(r, 2);
+  double temp1 = Vec3::dot(-ray.direction(), delta_p);
+  double determinant = pow(temp1, 2) - Vec3::dot(delta_p, delta_p) + pow(r, 2);
 
   if (determinant < 0.0) return intersection;
 

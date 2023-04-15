@@ -50,7 +50,7 @@ TEST(PlaneTests, TestRayIntersection) {
   std::shared_ptr<Material> plane_material = std::make_shared<Diffuse>(Vec3(0, 0, 0));
   Plane plane = Plane(plane_origin, plane_norm, plane_material);
   Vec3 ray_origin = Vec3(0, 1, 0);
-  Vec3 ray_dir = normalize(Vec3(1, -1, 0));
+  Vec3 ray_dir = Vec3::normalize(Vec3(1, -1, 0));
   Ray ray = Ray(ray_origin, ray_dir);
   Intersection intersection = plane.intersect(ray, 0 ,10);
   Vec3 expected_intersection = Vec3(1, 0, 0);

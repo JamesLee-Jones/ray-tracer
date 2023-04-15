@@ -44,7 +44,7 @@ TEST(SphereTests, TestNormalAt) {
   EXPECT_DOUBLE_EQ(s.normalAt(normal_point).x(), normal_point.x());
   EXPECT_DOUBLE_EQ(s.normalAt(normal_point).y(), normal_point.y());
   EXPECT_DOUBLE_EQ(s.normalAt(normal_point).z(), normal_point.z());
-  normal_point = normalize(Vec3(1, 2, 3));
+  normal_point = Vec3::normalize(Vec3(1, 2, 3));
   EXPECT_DOUBLE_EQ(s.normalAt(normal_point).x(), normal_point.x());
   EXPECT_DOUBLE_EQ(s.normalAt(normal_point).y(), normal_point.y());
   EXPECT_DOUBLE_EQ(s.normalAt(normal_point).z(), normal_point.z());

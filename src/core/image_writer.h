@@ -15,16 +15,16 @@ class ImageWriter {
 
   virtual void write_image(Image &image) const = 0;
 
-  virtual bool open() {
+  inline bool open() {
     file->open(filename);
     return is_open();
   }
 
-  [[nodiscard]] bool is_open() const {
+  [[nodiscard]] inline bool is_open() const {
     return file->is_open();
   }
 
-  bool close() {
+  inline bool close() {
     file->close();
     return !is_open();
   }

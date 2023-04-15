@@ -13,15 +13,15 @@ class Image {
   Image(int width, int height) : image(new std::vector<std::vector<Vec3>>(height,
                                                                           std::vector<Vec3>(width, Vec3(0, 0, 0)))) {}
 
-  Vec3 get_pixel(int x, int y) {
+  inline Vec3 get_pixel(int x, int y) {
     return image->at(image->size() - 1 - y).at(x);
   }
-  void set_pixel(int x, int y, Vec3 col) {
+  inline void set_pixel(int x, int y, Vec3 col) {
     image->at(image->size() - 1 - y).at(x) = col;
   }
 
-  int get_width() { return (int)image->at(0).size(); }
-  int get_height() { return (int)image->size(); }
+  inline int get_width() { return (int)image->at(0).size(); }
+  inline int get_height() { return (int)image->size(); }
 
  private:
   std::unique_ptr<image_t> image;

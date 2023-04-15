@@ -2,6 +2,8 @@
 #define MATERIAL_H
 
 #include "primitive.h"
+#include "ray.h"
+#include "vec3.h"
 
 #include <cmath>
 #include <stdexcept>

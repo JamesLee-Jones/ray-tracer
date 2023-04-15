@@ -132,14 +132,14 @@ TEST(VectorTests, TestDiv) {
 TEST(VectorTests, TestDot) {
   Vec3 v1 = Vec3(3, 6, 9);
   Vec3 v2 = Vec3(0.5, 2, 1.5);
-  double d = dot(v1, v2);
+  double d = Vec3::dot(v1, v2);
   EXPECT_EQ(d, 27);
 }
 
 TEST(VectorTests, TestCross) {
   Vec3 v1 = Vec3(3, 6, 9);
   Vec3 v2 = Vec3(0.5, 2, 1.5);
-  Vec3 c = cross(v1, v2);
+  Vec3 c = Vec3::cross(v1, v2);
   EXPECT_EQ(c.x(), -9);
   EXPECT_EQ(c.y(), 0);
   EXPECT_EQ(c.z(), 3);
@@ -147,5 +147,5 @@ TEST(VectorTests, TestCross) {
 
 TEST(VectorTests, TestNormalize) {
   Vec3 v1 = Vec3(3, 6, 9);
-  EXPECT_DOUBLE_EQ(normalize(v1).length(), 1);
+  EXPECT_DOUBLE_EQ(Vec3::normalize(v1).length(), 1);
 }
