@@ -2,6 +2,7 @@
 #define PRIMITIVE_H
 
 #include "ray.h"
+#include "vec3.h"
 
 #include <memory>
 
@@ -16,7 +17,7 @@ struct Intersection {
   std::shared_ptr<Material> material;
 
   inline void set_intersection_normal(const Ray &r, const Vec3 &outward_normal) {
-    front_face = dot(r.direction(), outward_normal) < 0;
+    front_face = Vec3::dot(r.direction(), outward_normal) < 0;
     normal = front_face ? outward_normal : -outward_normal;
   }
 };

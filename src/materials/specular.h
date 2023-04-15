@@ -9,12 +9,7 @@ class Specular : public Material {
  public:
   explicit Specular(const Vec3 &colour) : albedo{colour} {}
 
-  bool scatter(const Ray &ray_in, const Intersection &intersection, Vec3 &attenuation, Ray &scattered) const override {
-    Vec3 reflected_ray = reflect(normalize(ray_in.direction()), intersection.normal);
-    attenuation = albedo;
-    scattered = Ray(intersection.point, reflected_ray);
-    return dot(scattered.direction(), intersection.normal) > 0;
-  }
+  bool scatter(const Ray &ray_in, const Intersection &intersection, Vec3 &attenuation, Ray &scattered) const override;
 
  private:
   const Vec3 albedo;

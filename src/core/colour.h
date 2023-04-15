@@ -7,7 +7,7 @@
 #include <cmath>
 #include <iostream>
 
-Vec3 convert_colour(Vec3 colour, int samples=1) {
+static Vec3 convert_colour(Vec3 colour, int samples=1) {
   auto r = colour.x();
   auto g = colour.y();
   auto b = colour.z();
@@ -22,7 +22,7 @@ Vec3 convert_colour(Vec3 colour, int samples=1) {
           trunc(256 * b)};
 }
 
-void write_colour(std::ostream &s, Vec3 colour) {
+static void write_colour(std::ostream &s, Vec3 colour) {
   s << colour.x() << " " << colour.y() << " " << colour.z() << std::endl;
 }
 

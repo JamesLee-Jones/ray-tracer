@@ -34,7 +34,7 @@ class Plane : public Primitive {
 
 Intersection Plane::intersect(const Ray &ray, double mu_min, double mu_max) const {
   Intersection intersection;
-  double mu = -dot(ray.origin() - p, n) / dot(ray.direction(), n);
+  double mu = -Vec3::dot(ray.origin() - p, n) / Vec3::dot(ray.direction(), n);
   if (mu > mu_max || mu < mu_min) return intersection; // The ray does not intersect in the valid range
 
   intersection.hit = true;
