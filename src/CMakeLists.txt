@@ -7,6 +7,7 @@ SET(CORE_HEADERS
         core/ppm_writer.h
         core/ray.h
         core/ray_tracer.h
+        core/scene.h
         core/utilities.h
         core/vec3.h)
 
